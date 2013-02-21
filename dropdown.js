@@ -2,8 +2,8 @@
 $('.no-js').removeClass('no-js');
 
 
-var $menu = $('#js-menu');
-var $dropdowns = $menu.find('li:has("ul")').addClass('has-dropdown').children('a');
+var $nav = $('#js-rough-dropdown');
+var $dropdowns = $nav.find('li:has("ul")').addClass('has-dropdown').children('a');
 
 // Prevent default click
 $dropdowns.click(function(event){
@@ -15,7 +15,7 @@ $dropdowns.click(function(event){
 
 // Close dropdowns
 function closeDropdown() {
-	$menu.find('.has-dropdown').removeClass('is-open');
+	$nav.find('.has-dropdown').removeClass('is-open');
 
 	// Unbind events
 	$(document).off('keyup');
@@ -39,7 +39,7 @@ function toggleDropdown(element) {
 		$('html').on('click', function() {
 			closeDropdown();
 		});
-		$('.menu').click(function(event){
+		$nav.click(function(event){
 			event.stopPropagation();
 		});
 	}
