@@ -1,9 +1,12 @@
 {
 	"name": "rough-dropdown",
-	"description": "Simple, clickable dropdowns"
+	"description": "Simple, clickable dropdowns",
 	"version": "0.1.0",
 	"author": "Oskar Rough Mosumgaard",
 	"main": ["dropdown.html", "dropdown.css", "dropdown.js"],
+	"dependencies": {
+		"jquery": "*"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/oskarrough/rough-dropdown.git"
