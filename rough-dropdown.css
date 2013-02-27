@@ -43,7 +43,7 @@
 	color: blue;
 }
 .navigation a:hover {
-	background-color: #e1e1e1;
+	background-color: #d4d4d4;
 }
 
 /* dropdown */
@@ -63,13 +63,13 @@
 	border-top: 1px solid #eee;
 }
 .navigation .is-open,
-.navigation li ul {
+.navigation li:hover {
 	border-color: #000;
 }
-.navigation .is-open > a,
+/*.navigation .is-open > a,
 .navigation li li a {
-	background-color: #e1e1e1;
+	background-color: #d4d4d4;
 }
 .navigation li li a:hover {
 	background-color: #d4d4d4;
-}
+}*/

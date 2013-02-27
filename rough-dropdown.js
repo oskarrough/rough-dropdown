@@ -5,8 +5,8 @@
 
 		//Defaults:
 		this.defaults = {
-			closeOnESC: true,
-			closeOnClickOutside: true,
+			//closeOnESC: true,
+			//closeOnClickOutside: true,
 			dropdownClass: 'has-dropdown',
 			dropdownOpen: 'is-open'
 		};
