@@ -35,10 +35,8 @@
 			$dropdowns.children('a').on('click', function(event){
 				event.preventDefault();
 
-				// find the dropdown to open
-				var $element = $(event.currentTarget);
-				// and do it
-				_this.open( $element.parent() );
+				// find the dropdown to open// and do it
+				_this.open( $(this).parent() );
 			});
 		},
 
