@@ -1,15 +1,16 @@
-rough-dropdown
-==============
+# Rough: Dropdown
+This component provides two things:
 
-Component for easy dropdowns with click/tap behaviour.
-On click the dropdown will toggle and be closable if you click outside or press ESC.
+1. Low-level CSS for dropdowns
+2. Script to change dropdowns from hover to click
 
-The CSS is divided into necessary and "makeup" styles.
+The CSS is divided into necessary and "makeup" styles so you can delete what you don't need.
 
+## Installation
+* [Bower](http://bower.io/): `bower install --save rough-dropdown`
+* Download: [zip](https://github.com/oskarrough/rough-dropdown/zipball/master)
+* Git: `git clone https://github.com/oskarrough/rough-dropdown.git`
 
-## How to
+## Get started
 1. Reference jQuery and rough-dropdown.js in your project
-2. Call the plugin using using ```$('.js-rough-dropdown').roughDropdown();```
-
-## Options
-
+2. Call the plugin using using ```$('.js-roughDropdown').roughDropdown();```

@@ -1,0 +1,14 @@
+{
+    "name": "rough-dropdown",
+    "version": "0.2.0",
+    "author": "Oskar Rough Mosumgaard",
+    "description": "Simple, clickable dropdowns",
+    "main": [
+        "demo.html",
+        "rough-dropdown.css",
+        "rough-dropdown.js"
+    ],
+    "dependencies": {
+        "jquery": "*"
+    }
+}

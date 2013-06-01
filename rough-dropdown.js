@@ -5,10 +5,10 @@
 
 		//Defaults:
 		this.defaults = {
-			//closeOnESC: true,
-			//closeOnClickOutside: true,
+			closeOnESC: true,
+			closeOnClickOutside: true,
 			dropdownClass: 'has-dropdown',
-			dropdownOpen: 'is-open'
+			dropdownOpenClass: 'is-open'
 		};
 
 		//Extending options:
@@ -16,6 +16,8 @@
 
 		//Privates:
 		this.$el = $(el);
+		this.$allDropdownParents = this.$el.find('li').has('ul');
+		this.$dropdownParent;
 	}
 
 	// Separate functionality from object creation
@@ -24,19 +26,23 @@
 		init: function() {
 			var _this = this;
 
-			// @todo: Modernizr normally does this for us
-			// and do we really need to support no js?
-			$('.no-js').removeClass('no-js');
+			// Find <li> elements that have children <ul> and mark them
+			_this.$allDropdownParents.addClass(_this.opts.dropdownClass);
 
-			// Find <li> elements that are dropdowns and mark them
-			var $dropdowns = _this.$el.find('li').has('ul').addClass(_this.opts.dropdownClass);
-
-			// Prevent default click
-			$dropdowns.children('a').on('click', function(event){
+			// Prevent default click and bind to toggle the dropdown instead
+			_this.$allDropdownParents.children('a').on('click', function(event){
 				event.preventDefault();
 
-				// find the dropdown to open// and do it
-				_this.open( $(this).parent() );
+				// Check if the dropdown is already active
+				_this.$dropdownParent = $(this).parent();
+
+				var isOpen = _this.$dropdownParent.hasClass(_this.opts.dropdownOpenClass);
+
+				if (!isOpen) {
+					_this.open();
+				} else {
+					_this.close();
+				}
 			});
 		},
 
@@ -44,14 +50,23 @@
 		open: function(element) {
 			var _this = this;
 
-			// Check if the dropdown is already active
-			var isOpen = element.hasClass(this.opts.dropdownOpen);
-			_this.close();
+			// Open the dropdown
+			this.$dropdownParent.addClass(this.opts.dropdownOpenClass);
+			
+			// and enable the events
+			_this.handleEvents();
+		},
 
-			if (!isOpen) {
-				element.addClass(this.opts.dropdownOpen);
-				_this.handleEvents();
-			}
+		//Close the dropdown
+		close: function() {
+			var _this = this;
+
+			// Close the dropdown
+			this.$dropdownParent.removeClass(this.opts.dropdownOpenClass);
+
+			// and disable the  events
+			$(document).off('keyup');
+			$('html').off('click');
 		},
 
 		// Handle events
@@ -59,32 +74,24 @@
 			var _this = this;
 
 			// Close on "ESC" click
-			$(document).on('keyup', function(e) {
-				if (e.keyCode == 27) {
-					_this.close();
-				}
-			});
+			if (this.opts.closeOnESC) {
+				$(document).on('keyup', function(e) {
+					if (e.keyCode === 27) {
+						_this.close();
+					}
+				});
+			}
 
 			// Close on click outside
-			$('html').on('click', function() {
-				_this.close();
-			});
-			this.$el.on('click', function(event){
-				event.stopPropagation();
-			});
-		},
-
-		//Close the dropdown
-		close: function() {
-			var _this = this;
-
-			//this.$el.find(this.opts.dropdownClass).removeClass(this.opts.dropdownOpen);
-			$openDropdowns = this.$el.find('.is-open');
-			$openDropdowns.removeClass('is-open');
-
-			// Unbind events
-			$(document).off('keyup');
-			$('html').off('click');
+			if (this.opts.closeOnClickOutside) {
+				$('html').on('click', function() {
+					_this.close();
+				});
+				
+				this.$el.on('click', function(event){
+					event.stopPropagation();
+				});
+			}
 		}
 	};
 
