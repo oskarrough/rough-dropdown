@@ -15,4 +15,4 @@ The CSS is divided into necessary and "makeup" styles so you can delete what you
 1. Reference jQuery and `<script src="rough-dropdown.js"></script>`
 2. Reference `<link rel="stylesheet" href="rough-dropdown.css">`
 3. You will need a container with the classes: `Nav` and `Nav--dropdown`
-4. Call the plugin using using ```$('.Nav--dropdown').roughDropdown()
+4. Call the plugin using using `$('.Nav--dropdown').roughDropdown();`
