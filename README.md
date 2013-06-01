@@ -12,5 +12,7 @@ The CSS is divided into necessary and "makeup" styles so you can delete what you
 * Git: `git clone https://github.com/oskarrough/rough-dropdown.git`
 
 ## Get started
-1. Reference jQuery and rough-dropdown.js in your project
-2. Call the plugin using using ```$('.js-roughDropdown').roughDropdown();```
+1. Reference jQuery and `<script src="rough-dropdown.js"></script>`
+2. Reference `<link rel="stylesheet" href="rough-dropdown.css">`
+3. You will need a container with the classes: `Nav` and `Nav--dropdown`
+4. Call the plugin using using ```$('.Nav--dropdown').roughDropdown()

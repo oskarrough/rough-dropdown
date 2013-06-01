@@ -35,7 +35,6 @@
 
 				// Check if the dropdown is already active
 				_this.$dropdownParent = $(this).parent();
-
 				var isOpen = _this.$dropdownParent.hasClass(_this.opts.dropdownOpenClass);
 
 				if (!isOpen) {
