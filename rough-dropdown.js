@@ -7,7 +7,7 @@
 		this.defaults = {
 			closeOnESC: true,
 			closeOnClickOutside: true,
-			dropdownClass: 'has-dropdown',
+			//dropdownClass: 'has-dropdown',
 			dropdownOpenClass: 'is-open'
 		};
 
@@ -27,7 +27,7 @@
 			var _this = this;
 
 			// Find <li> elements that have children <ul> and mark them
-			_this.$allDropdownParents.addClass(_this.opts.dropdownClass);
+			//_this.$allDropdownParents.addClass(_this.opts.dropdownClass);
 
 			// Prevent default click and bind to toggle the dropdown instead
 			_this.$allDropdownParents.children('a').on('click', function(event){
@@ -87,7 +87,8 @@
 					_this.close();
 				});
 				
-				this.$el.on('click', function(event){
+				// dont close if you click inside a <li> element
+				this.$el.on('click', 'li', function(event){
 					event.stopPropagation();
 				});
 			}
